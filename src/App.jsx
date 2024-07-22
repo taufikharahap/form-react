@@ -128,13 +128,11 @@ function App() {
     setResult({ ...dataProduct, variants });
   };
 
-  useEffect(() => {
-    if (selectedVariants.length == 0) {
-      setSelectedVariants([]);
-      setResult(null);
-      return;
-    }
-  }, []);
+  const handleReset = (e) => {
+    setSelectedVariants([]);
+    setSelectedProduct("");
+    setResult(null);
+  };
 
   return (
     <>
@@ -145,6 +143,7 @@ function App() {
             action=""
             className="flex flex-col gap-y-6 w-72 border-2 border-black rounded-lg p-4"
             onSubmit={handleSubmit}
+            onReset={handleReset}
           >
             <div className="flex flex-col items-start gap-y-3">
               {data &&
